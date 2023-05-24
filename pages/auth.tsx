@@ -1,12 +1,15 @@
 import Input from "@/components/Input";
 import React, { useCallback, useState } from "react";
 import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Auth() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
+  
 
   const [variant, setVariant] = useState("login");
 
@@ -15,6 +18,21 @@ export default function Auth() {
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
+  
+  const login = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: '/'
+      });
+
+      router.push("/");
+    } catch (error) {
+      console.log("Error in the login function call in auth.tsx: ", error);
+    }
+  }, [email, password, router])
 
   const register = useCallback(async () => {
     try {
@@ -23,10 +41,11 @@ export default function Auth() {
         name,
         password
       });
+      login();
     } catch(error) {
       console.log(error);
     }
-  }, [email, name, password])
+  }, [email, name, password, login])
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -63,7 +82,7 @@ export default function Auth() {
                 value={password}
               />
             </div>
-            <button onClick={register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+            <button onClick={variant === "login" ? login : register } className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
               { variant == "login" ? "Login" : "Sign up" }
             </button>
             <p className="text-neutral-500 mt-12">

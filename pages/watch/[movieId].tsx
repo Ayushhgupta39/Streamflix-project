@@ -11,6 +11,8 @@ const Watch = () => {
 
     const { data } = useMovie(movieId as string);
 
+    // This is a test comment
+
     return (
         <div className="h-screen w-screen bg-black">
             <nav className="fixed w-full p-4 z-10 flex flex-row items-center gap-8 bg-black bg-opacity-70">

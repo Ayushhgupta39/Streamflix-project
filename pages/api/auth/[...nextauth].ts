@@ -17,7 +17,7 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     }),
     Credentials({
-      id: 'credentials',
+      id: 'Credentials',
       name: 'Credentials',
       credentials: {
         email: {

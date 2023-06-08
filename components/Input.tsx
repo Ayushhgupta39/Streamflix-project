@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = ({
         text-zinc-400
         duration-150
         transform
-        -translate-y-3
+        -translate-y-2
         scale-75
         top-4
         z-10

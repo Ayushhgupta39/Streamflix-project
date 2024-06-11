@@ -44,7 +44,7 @@ export default function Navbar() {
         w-full
         px-4
         md:px-16
-        py-6
+        py-3
         flex
         flex-row
         items-center
@@ -53,7 +53,7 @@ export default function Navbar() {
         ${showBackground ? "bg-zinc-900 bg-opacity-90" : ""}
       `}
       >
-        <img className="h-4 lg:h-7" src="/images/logo.png" alt="netflix_logo" />
+        <img className="h-4 lg:h-20" src="/images/logo_2.png" alt="logo" />
         <div
           className="
             flex-row

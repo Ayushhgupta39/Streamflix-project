@@ -79,7 +79,7 @@ export default function Auth() {
             </div>
             <button
               onClick={variant === "login" ? login : register}
-              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+              className="bg-custom_green py-3 text-white rounded-md w-full mt-10 hover:bg-[#15595a] transition"
             >
               {variant == "login" ? "Login" : "Sign up"}
             </button>
@@ -119,9 +119,9 @@ export default function Auth() {
                 <FaGithub size={30} />
               </div>
             </div>
-            <p className="text-neutral-500 mt-12">
+            <p className="text-neutral-500 text-sm text-center mt-12">
               {variant == "login"
-                ? "First time using Netflix?"
+                ? "First time using Streamflix?"
                 : "Already have an account?"}
               <span
                 onClick={toggleVariant}
